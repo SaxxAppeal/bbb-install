@@ -367,11 +367,6 @@ check_root() {
   if [ $EUID != 0 ]; then err "You must run this command as root."; fi
 }
 
-check_mem() {
-  MEM=`grep MemTotal /proc/meminfo | awk '{print $2}'`
-  MEM=$((MEM/1000))
-  if (( $MEM < 3940 )); then err "Your server needs to have (at least) 4G of memory."; fi
-}
 
 check_ubuntu(){
   RELEASE=$(lsb_release -r | sed 's/^[^0-9]*//g')
